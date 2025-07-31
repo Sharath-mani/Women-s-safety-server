@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Device</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+        }
+
+        .modal-content {
+            margin: 10% auto;
+            padding: 20px;
+            background: #000;
+            border: 5px solid #ff0000;
+            border-radius: 30px;
+            width: 80%;
+            max-width: 700px;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ff0000;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="neon-heading">Women Safety Protocol</h1>
+        </div>
+    </header>
+    
+    <main>
+        <div class="menu">
+            <form action="/activate" method="POST">
+                <button type="submit" class="btn activate">Activate Emergency</button>
+            </form>
+            <button class="btn deactivate" onclick="deactivateEmergency()">Deactivate Emergency</button>
+            <button class="btn how-it-works" onclick="openModal()">How Does It Work?</button>
+            <button class="btn exit" onclick="exitSystem()">Exit System </button>
+        </div>
+        <div id="statusMessage" class="status-message"></div>
+    </main>
+
+    <!-- Modal for Video -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-header">How It Works</div>
+            <video id="howItWorksVideo" controls muted>
+                <source src="{{ url_for('static', filename='vt3.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <footer></footer>
+
+    <script>
+        // Function to open the modal
+        function openModal() {
+            document.getElementById('videoModal').style.display = 'block';
+        }
+
+        // Function to close the modal and stop video
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('howItWorksVideo');
+            modal.style.display = 'none';
+            video.pause(); // Pause the video
+            video.currentTime = 0; // Reset video to the beginning
+        }
+
+        // Functions for existing buttons
+        function deactivateEmergency() {
+            document.getElementById('statusMessage').textContent = 'Emergency Deactivated';
+        }
+
+        function exitSystem() {
+            document.getElementById('statusMessage').textContent ='Exiting';
+        }
+    </script>
+</body>
+</html>

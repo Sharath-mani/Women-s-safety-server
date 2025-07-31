@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re-enter Passcode</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Re-enter Your Passcode</h1>
+    </header>
+    
+    <main>
+        <form action="/verify_reenter_passcode" method="POST">
+            <label for="passcode" class="form-label">Re Enter The Passcode in 10 Sec:</label><br><br>
+            <label for="passcode" class="form-label">Enter Passcode:</label><br><br>
+            <input type="password" name="passcode" class="passcode-input" required><br>
+            <button type="submit" class="btn submit">Submit</button><br> 
+        </form>
+        <br>
+
+        <h3>Forgot Passcode?</h3>
+        <form action="/verify_master_key" method="POST">
+            <label for="master_key" class="form-label">Enter Master Key:</label><br><br>
+            <input type="password" name="master_key" class="passcode-input" required><br>
+            <button type="submit" class="btn submit">Verify</button> <br>
+        </form>
+    </main>
+</body>
+</html>

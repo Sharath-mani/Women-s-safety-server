@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Passcode</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>enter password</h1>
+    </header>
+    
+    <main>
+        <form action="/set_passcode" method="POST">
+            <label for="new_passcode"></label>
+            <input type="password" id="new_passcode" name="new_passcode" class="passcode-input" placeholder="Enter passcode" required>
+            <br> <!-- Line break to move the button to the next line -->
+            <button type="submit" class="btn submit">Set Passcode</button> <!-- Button below the input -->
+        </form>
+    </main>
+</body>
+</html>
